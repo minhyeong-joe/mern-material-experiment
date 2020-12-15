@@ -15,4 +15,13 @@ export default makeStyles((theme) => ({
 	innerList: {
 		paddingLeft: theme.spacing(3),
 	},
+	link: {
+		textDecoration: "none",
+		color: "inherit",
+		display: "block",
+		"&.active": {
+			backgroundColor: theme.palette.grey[500],
+			color: "white",
+		},
+	},
 }));

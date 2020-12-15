@@ -6,11 +6,13 @@ import {
 	Drawer,
 	List,
 	ListItem,
+	ListItemText,
 	Toolbar,
 	Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import PersonIcon from "@material-ui/icons/Person";
+import { Link, NavLink } from "react-router-dom";
 
 import useStyles from "./style";
 
@@ -34,19 +36,92 @@ const Header = () => {
 					<ListItem>Material UI</ListItem>
 					<Divider></Divider>
 					<List className={classes.innerList}>
-						<ListItem button>Layout</ListItem>
-						<ListItem button>Form</ListItem>
-						<ListItem button>Navigation</ListItem>
-						<ListItem button>Surfaces</ListItem>
-						<ListItem button>Feedback</ListItem>
-						<ListItem button>Data Display</ListItem>
+						<NavLink
+							to="/material-ui/layout"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Layout" />
+							</ListItem>
+						</NavLink>
+						<NavLink
+							to="/material-ui/form"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Form" />
+							</ListItem>
+						</NavLink>
+						<NavLink
+							to="/material-ui/navigation"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Navigation" />
+							</ListItem>
+						</NavLink>
+						<NavLink
+							to="/material-ui/surfaces"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Surfaces" />
+							</ListItem>
+						</NavLink>
+						<NavLink
+							to="/material-ui/feedback"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Feedback" />
+							</ListItem>
+						</NavLink>
+						<NavLink
+							to="/material-ui/datadisplay"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Data Display" />
+							</ListItem>
+						</NavLink>
 					</List>
 					<ListItem>Redux</ListItem>
 					<Divider></Divider>
 					<List className={classes.innerList}>
-						<ListItem button>Simple Counter</ListItem>
-						<ListItem button>Redux Thunk</ListItem>
-						<ListItem button>Redux Form</ListItem>
+						<NavLink
+							to="/redux/simple-counter"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Simple Counter" />
+							</ListItem>
+						</NavLink>
+						<NavLink
+							to="/redux/redux-thunk"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Redux Thunk" />
+							</ListItem>
+						</NavLink>
+
+						<NavLink
+							to="/redux/redux-form"
+							className={classes.link}
+							activeClassName="active"
+						>
+							<ListItem button>
+								<ListItemText primary="Redux Form" />
+							</ListItem>
+						</NavLink>
 					</List>
 					<ListItem>Socket and Auth</ListItem>
 					<Divider></Divider>
@@ -54,8 +129,12 @@ const Header = () => {
 						<Button variant="contained" color="primary">
 							<PersonIcon /> &nbsp; Login using OAuth 2.0
 						</Button>
-						<ListItem button>Simple Chat</ListItem>
-						<ListItem button>Gomoku</ListItem>
+						<ListItem button>
+							<ListItemText primary="Simple Chat" />
+						</ListItem>
+						<ListItem button>
+							<ListItemText primary="Gomoku" />
+						</ListItem>
 					</List>
 				</List>
 			</div>
@@ -71,9 +150,11 @@ const Header = () => {
 				<Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
 					{renderMenus()}
 				</Drawer>
-				<Typography variant="h4" className={classes.logo}>
-					Mern-Material
-				</Typography>
+				<Link to="/" className={classes.link}>
+					<Typography variant="h4" className={classes.logo}>
+						Mern-Material
+					</Typography>
+				</Link>
 			</Toolbar>
 		</AppBar>
 	);
