@@ -5,10 +5,16 @@ import {
 	FormControlLabel,
 	FormLabel,
 	Grid,
+	GridList,
+	GridListTile,
+	GridListTileBar,
 	Paper,
 	Radio,
 	RadioGroup,
+	Typography,
+	IconButton,
 } from "@material-ui/core";
+import InfoIcon from "@material-ui/icons/Info";
 
 import useStyles from "./style";
 
@@ -20,7 +26,7 @@ const Layout = () => {
 	const [spacing, setSpacing] = useState(0);
 
 	return (
-		<div>
+		<div className={classes.root}>
 			<Container className={classes.Container} maxWidth="md">
 				<Grid className={classes.row} container spacing={3}>
 					<Grid className={classes.col} item xs={12}>
@@ -229,6 +235,140 @@ const Layout = () => {
 						</FormControl>
 					</Grid>
 				</Grid>
+			</Container>
+
+			<Container maxWidth="md" className={classes.Container}>
+				<Paper className={classes.complexGridCard}>
+					<Grid container spacing={2}>
+						<Grid item xs={12} sm={3}>
+							<img
+								src="https://via.placeholder.com/150"
+								alt="placeholder"
+								style={{ height: "100%", width: "100%" }}
+							/>
+						</Grid>
+						<Grid item container xs={12} sm={9} direction="column">
+							<Grid item container>
+								<Grid item xs={8}>
+									<Typography variant="subtitle1" gutterBottom>
+										Standard license
+									</Typography>
+								</Grid>
+								<Grid item xs={4} style={{ textAlign: "right" }}>
+									<Typography variant="subtitle1">$19.00</Typography>
+								</Grid>
+							</Grid>
+							<Grid item xs>
+								<Typography variant="body2" gutterBottom>
+									Full resolution 1920x1080 • JPEG
+								</Typography>
+								<Typography variant="body2" gutterBottom color="textSecondary">
+									ID: 1030114
+								</Typography>
+							</Grid>
+							<Grid item xs>
+								<Typography
+									variant="body2"
+									style={{
+										marginTop: "16px",
+										cursor: "pointer",
+										display: "inline-block",
+									}}
+								>
+									Remove
+								</Typography>
+							</Grid>
+						</Grid>
+					</Grid>
+				</Paper>
+			</Container>
+
+			<Container
+				maxWidth="md"
+				style={{
+					backgroundColor: "gray",
+					padding: "20px",
+					marginBottom: "32px",
+				}}
+			>
+				<GridList cellHeight="128" cols={4} spacing={0}>
+					<GridListTile cols={2} rows={2}>
+						<img
+							src="https://images.unsplash.com/photo-1612485222394-376d81a3e829?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+							alt="random"
+							className={classes.image}
+						/>
+						<GridListTileBar
+							title="Tile Bar 1"
+							subtitle="subtitle"
+							actionIcon={
+								<IconButton>
+									<InfoIcon style={{ color: "white" }} />
+								</IconButton>
+							}
+						/>
+					</GridListTile>
+					<GridListTile rows={2}>
+						<img
+							src="https://images.unsplash.com/photo-1611146227868-30ebc19bda39?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+							alt="random"
+						/>
+						<GridListTileBar
+							title="Tile Bar 2"
+							subtitle="titlePosition: 'top'"
+							titlePosition="top"
+							actionIcon={
+								<IconButton>
+									<InfoIcon style={{ color: "white" }} />
+								</IconButton>
+							}
+						/>
+					</GridListTile>
+					<GridListTile rows={2}>
+						<img
+							src="https://images.unsplash.com/photo-1612256360672-085b80f3ce88?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+							alt="random"
+						/>
+						<GridListTileBar
+							title="Tile Bar 3"
+							subtitle="actionPosition: 'left'"
+							actionPosition="left"
+							actionIcon={
+								<IconButton>
+									<InfoIcon style={{ color: "white" }} />
+								</IconButton>
+							}
+						/>
+					</GridListTile>
+					<GridListTile rows={2}>
+						<img
+							src="https://images.unsplash.com/photo-1612665139153-68682e0f741d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+							alt="random"
+						/>
+						<GridListTileBar
+							title={
+								<Typography variant="h5" style={{ color: "gold" }}>
+									Tile Bar 4
+								</Typography>
+							}
+							subtitle="fancy title"
+							actionIcon={
+								<IconButton>
+									<InfoIcon style={{ color: "white" }} />
+								</IconButton>
+							}
+						/>
+					</GridListTile>
+					<GridListTile rows={2}>
+						<img
+							src="https://images.unsplash.com/photo-1612251248897-e3afc34c6920?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+							alt="random"
+						/>
+					</GridListTile>
+					<GridListTile cols={2} rows={2}>
+						<img src="https://source.unsplash.com/random" alt="random" />
+					</GridListTile>
+				</GridList>
 			</Container>
 		</div>
 	);

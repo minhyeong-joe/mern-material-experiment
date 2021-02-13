@@ -152,7 +152,7 @@ const Header = () => {
 				</Drawer>
 				<Link to="/" className={classes.link}>
 					<Typography variant="h4" className={classes.logo}>
-						Mern-Material
+						MERN & Material
 					</Typography>
 				</Link>
 			</Toolbar>
