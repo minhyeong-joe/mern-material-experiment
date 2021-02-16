@@ -8,6 +8,7 @@ import {
 	InputAdornment,
 	IconButton,
 	FormLabel,
+	Button,
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -41,8 +42,6 @@ const DEFAULT_FORM_VALUE = {
 	check3: false,
 	gender: "male",
 	age: 20,
-	left: [],
-	right: [],
 };
 
 const selectOptions = [
@@ -60,6 +59,7 @@ const Form = () => {
 	const classes = useStyles();
 	const [entry, setEntry] = useState(DEFAULT_FORM_VALUE);
 	const [showPassword, setShowPassword] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const onShowPasswordClick = () => {
 		setShowPassword(!showPassword);
@@ -205,10 +205,53 @@ const Form = () => {
 									min={0}
 									max={80}
 								/>
+								<Grid container justify="center">
+									<Grid item xs={4}>
+										<Button
+											variant="contained"
+											color="primary"
+											className={classes.btn}
+											onClick={() => {
+												setIsSubmitting(true);
+												const submittedEntry = Object(entry);
+												setTimeout(() => {
+													// simiulated delay
+													alert(
+														`Form Submitted:\n${JSON.stringify(
+															submittedEntry,
+															"\t",
+															1
+														)}`
+													);
+													setEntry(DEFAULT_FORM_VALUE);
+													setIsSubmitting(false);
+												}, 1500);
+											}}
+											disabled={isSubmitting}
+										>
+											Submit
+										</Button>
+									</Grid>
+									<Grid item xs={4}>
+										<Button
+											variant="outlined"
+											color="secondary"
+											className={classes.btn}
+											onClick={() => {
+												setEntry(DEFAULT_FORM_VALUE);
+											}}
+											disabled={isSubmitting}
+										>
+											Reset
+										</Button>
+									</Grid>
+								</Grid>
 							</form>
 						</Grid>
 						<Grid item xs={12} md={4}>
-							<code>{JSON.stringify(entry, null, 1)}</code>
+							<pre className={classes.codeblock}>
+								{JSON.stringify(entry, "\t", 1)}
+							</pre>
 						</Grid>
 					</Grid>
 				</Paper>
