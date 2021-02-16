@@ -6,12 +6,26 @@ import {
 	FormLabel,
 } from "@material-ui/core";
 
-const Checkbox = ({ label, checked, onChange }) => {
+const Checkbox = ({ label, checked, onChange, name }) => {
+	const convertEventParam = (name, value) => ({
+		target: {
+			name,
+			value,
+		},
+	});
+
 	return (
 		<FormControl>
 			<FormControlLabel
 				control={
-					<MUICheckbox checked={checked} onChange={onChange} color="primary" />
+					<MUICheckbox
+						checked={checked}
+						onChange={(e) =>
+							onChange(convertEventParam(name, e.target.checked))
+						}
+						color="primary"
+						name={name}
+					/>
 				}
 				label={label}
 			/>

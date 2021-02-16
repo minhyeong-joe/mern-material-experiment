@@ -15,13 +15,26 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Switch = ({ label, checked, onChange, labelPlacement }) => {
+const Switch = ({ label, checked, onChange, labelPlacement, name }) => {
 	const styles = useStyles();
+	const convertEventParam = (name, value) => ({
+		target: {
+			name,
+			value,
+		},
+	});
 	return (
 		<FormControl className={styles.container}>
 			<FormControlLabel
 				label={label}
-				control={<MUISwitch checked={checked} onChange={onChange} />}
+				control={
+					<MUISwitch
+						checked={checked}
+						onChange={(e) =>
+							onChange(convertEventParam(name, e.target.checked))
+						}
+					/>
+				}
 				labelPlacement={labelPlacement}
 			/>
 		</FormControl>

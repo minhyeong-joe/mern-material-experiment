@@ -8,7 +8,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const TextInput = ({ type, label, value, onChange, InputProps, name }) => {
+const TextInput = ({
+	type,
+	label,
+	value,
+	onChange,
+	InputProps,
+	name,
+	required,
+}) => {
 	const styles = useStyles();
 	return (
 		<TextField
