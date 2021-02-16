@@ -16,7 +16,6 @@ import AsyncRedux from "./redux/AsyncRedux";
 import ReduxForm from "./redux/ReduxForm";
 
 export default function App() {
-	console.log(history);
 	return (
 		<div>
 			<CssBaseline />

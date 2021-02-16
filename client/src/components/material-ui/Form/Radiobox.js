@@ -14,6 +14,7 @@ const Radiobox = ({ label, options, onChange, labelPlacement, value, row }) => {
 			<RadioGroup value={value} onChange={onChange} row={row}>
 				{options.map((option) => (
 					<FormControlLabel
+						key={option.value}
 						label={option.label}
 						value={option.value}
 						labelPlacement={labelPlacement}

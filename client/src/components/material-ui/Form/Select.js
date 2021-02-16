@@ -6,11 +6,11 @@ import {
 	Select as MUISelect,
 } from "@material-ui/core";
 
-const Select = ({ defaultValue, options, label, minWidth, onChange }) => {
+const Select = ({ value, options, label, minWidth, onChange }) => {
 	return (
 		<FormControl style={{ minWidth: minWidth }}>
 			<FormLabel>{label}</FormLabel>
-			<MUISelect value={defaultValue} onChange={onChange}>
+			<MUISelect value={value || ""} onChange={onChange}>
 				{options.map((option) => {
 					return (
 						<MenuItem key={option.value} value={option.value}>

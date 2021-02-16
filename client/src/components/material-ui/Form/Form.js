@@ -25,6 +25,7 @@ import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
 import Switch from "./Switch";
 import Radiobox from "./Radiobox";
+import Slider from "./Slider";
 
 const DEFAULT_FORM_VALUE = {
 	firstName: "",
@@ -39,6 +40,7 @@ const DEFAULT_FORM_VALUE = {
 	check2: false,
 	check3: false,
 	gender: "male",
+	age: 20,
 	left: [],
 	right: [],
 };
@@ -147,7 +149,7 @@ const Form = () => {
 									onChange={(e) => {
 										setEntry({ ...entry, state: e.target.value });
 									}}
-									defaultValue={entry.state}
+									value={entry.state}
 								/>
 								<FormGroup>
 									<Switch
@@ -192,6 +194,16 @@ const Form = () => {
 									}}
 									value={entry.gender}
 									row
+								/>
+								<Slider
+									label="Age"
+									value={entry.age}
+									onChange={(e, newVal) => {
+										setEntry({ ...entry, age: newVal });
+									}}
+									marks
+									min={0}
+									max={80}
 								/>
 							</form>
 						</Grid>
