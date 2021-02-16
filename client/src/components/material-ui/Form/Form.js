@@ -24,6 +24,7 @@ import Textarea from "./Textarea";
 import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
 import Switch from "./Switch";
+import Radiobox from "./Radiobox";
 
 const DEFAULT_FORM_VALUE = {
 	firstName: "",
@@ -46,6 +47,11 @@ const selectOptions = [
 	{ value: "az", label: "AZ" },
 	{ value: "ca", label: "CA" },
 	{ value: "tx", label: "TX" },
+];
+
+const radioOptions = [
+	{ value: "male", label: "Male" },
+	{ value: "female", label: "Female" },
 ];
 
 const Form = () => {
@@ -177,6 +183,16 @@ const Form = () => {
 										}}
 									/>
 								</FormGroup>
+								<Radiobox
+									label="Gender"
+									labelPlacement="end"
+									options={radioOptions}
+									onChange={(e) => {
+										setEntry({ ...entry, gender: e.target.value });
+									}}
+									value={entry.gender}
+									row
+								/>
 							</form>
 						</Grid>
 						<Grid item xs={12} md={4}>
