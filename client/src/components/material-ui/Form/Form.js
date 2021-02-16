@@ -69,7 +69,7 @@ const Form = () => {
 		<MuiPickersUtilsProvider utils={DateFnsUtils} className={classes.root}>
 			<Container>
 				<Paper className={classes.paper}>
-					<Grid container spacing={2} wrap="nowrap">
+					<Grid container spacing={2}>
 						<Grid item xs={12} md={8}>
 							<Typography variant="h2">Form</Typography>
 							<form>
@@ -205,8 +205,8 @@ const Form = () => {
 									min={0}
 									max={80}
 								/>
-								<Grid container justify="center">
-									<Grid item xs={4}>
+								<Grid container justify="center" spacing={1}>
+									<Grid item xs={6} md={4}>
 										<Button
 											variant="contained"
 											color="primary"
@@ -232,7 +232,7 @@ const Form = () => {
 											Submit
 										</Button>
 									</Grid>
-									<Grid item xs={4}>
+									<Grid item xs={6} md={4}>
 										<Button
 											variant="outlined"
 											color="secondary"
