@@ -27,6 +27,7 @@ import Checkbox from "./Checkbox";
 import Switch from "./Switch";
 import Radiobox from "./Radiobox";
 import Slider from "./Slider";
+import useForm from "./useForm";
 
 const DEFAULT_FORM_VALUE = {
 	firstName: "",
@@ -35,7 +36,7 @@ const DEFAULT_FORM_VALUE = {
 	date: new Date(),
 	time: new Date(),
 	comment: "",
-	state: null,
+	state: "",
 	isHuman: true,
 	check1: false,
 	check2: false,
@@ -57,9 +58,10 @@ const radioOptions = [
 
 const Form = () => {
 	const classes = useStyles();
-	const [entry, setEntry] = useState(DEFAULT_FORM_VALUE);
 	const [showPassword, setShowPassword] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const { values, setValues, handleInputChange } = useForm(DEFAULT_FORM_VALUE);
 
 	const onShowPasswordClick = () => {
 		setShowPassword(!showPassword);
@@ -79,20 +81,18 @@ const Form = () => {
 											<TextInput
 												type="text"
 												label="First Name"
-												value={entry.firstName}
-												onChange={(e) => {
-													setEntry({ ...entry, firstName: e.target.value });
-												}}
+												name="firstName"
+												value={values.firstName}
+												onChange={handleInputChange}
 											/>
 										</Grid>
 										<Grid item xs>
 											<TextInput
 												type="text"
 												label="Last Name"
-												value={entry.lastName}
-												onChange={(e) => {
-													setEntry({ ...entry, lastName: e.target.value });
-												}}
+												name="lastName"
+												value={values.lastName}
+												onChange={handleInputChange}
 											/>
 										</Grid>
 									</Grid>
@@ -109,102 +109,96 @@ const Form = () => {
 											</InputAdornment>
 										),
 									}}
-									value={entry.password}
-									onChange={(e) => {
-										setEntry({ ...entry, password: e.target.value });
-									}}
+									name="password"
+									value={values.password}
+									onChange={handleInputChange}
 								/>
 								<FormGroup row>
 									<KeyboardDatePicker
 										variant="normal"
 										format="MM/dd/yyyy"
 										label="Date"
-										value={entry.date}
-										onChange={(newDate) => {
-											setEntry({ ...entry, date: newDate });
-										}}
+										name="date"
+										value={values.date}
+										onChange={handleInputChange}
 									/>
 									<KeyboardTimePicker
 										variant="normal"
 										label="Time"
-										value={entry.time}
-										onChange={(newTime) => {
-											setEntry({ ...entry, time: newTime });
-										}}
+										name="time"
+										value={values.time}
+										onChange={handleInputChange}
 										style={{ marginLeft: "16px" }}
 									/>
 								</FormGroup>
 								<Textarea
 									label="comment"
-									value={entry.comment}
-									onChange={(e) => {
-										setEntry({ ...entry, comment: e.target.value });
-									}}
+									name="comment"
+									value={values.comment}
+									onChange={handleInputChange}
 									rows={3}
 								/>
 								<Select
 									options={selectOptions}
 									label="State"
 									minWidth={150}
-									onChange={(e) => {
-										setEntry({ ...entry, state: e.target.value });
-									}}
-									value={entry.state}
+									onChange={handleInputChange}
+									name="state"
+									value={values.state}
 								/>
-								<FormGroup>
+								{/* <FormGroup>
 									<Switch
-										checked={entry.isHuman}
+										checked={values.isHuman}
 										onChange={(e) => {
-											setEntry({ ...entry, isHuman: e.target.checked });
+											setvalues({ ...values, isHuman: e.target.checked });
 										}}
 										labelPlacement="start"
 										label="Are you a human?"
 									/>
-								</FormGroup>
-								<FormLabel>Checkbox</FormLabel>
+								</FormGroup> */}
+								{/* <FormLabel>Checkbox</FormLabel>
 								<FormGroup row>
 									<Checkbox
 										label="check1"
-										checked={entry.check1}
+										checked={values.check1}
 										onChange={(e) => {
-											setEntry({ ...entry, check1: e.target.checked });
+											setvalues({ ...values, check1: e.target.checked });
 										}}
 									/>
 									<Checkbox
 										label="check2"
-										checked={entry.check2}
+										checked={values.check2}
 										onChange={(e) => {
-											setEntry({ ...entry, check2: e.target.checked });
+											setvalues({ ...values, check2: e.target.checked });
 										}}
 									/>
 									<Checkbox
 										label="check3"
-										checked={entry.check3}
+										checked={values.check3}
 										onChange={(e) => {
-											setEntry({ ...entry, check3: e.target.checked });
+											setvalues({ ...values, check3: e.target.checked });
 										}}
 									/>
-								</FormGroup>
+								</FormGroup> */}
 								<Radiobox
 									label="Gender"
 									labelPlacement="end"
 									options={radioOptions}
-									onChange={(e) => {
-										setEntry({ ...entry, gender: e.target.value });
-									}}
-									value={entry.gender}
+									onChange={handleInputChange}
+									name="gender"
+									value={values.gender}
 									row
 								/>
-								<Slider
+								{/* <Slider
 									label="Age"
-									value={entry.age}
+									value={values.age}
 									onChange={(e, newVal) => {
-										setEntry({ ...entry, age: newVal });
+										setvalues({ ...values, age: newVal });
 									}}
 									marks
 									min={0}
 									max={80}
-								/>
+								/> */}
 								<Grid container justify="center" spacing={1}>
 									<Grid item xs={6} md={4}>
 										<Button
@@ -213,17 +207,17 @@ const Form = () => {
 											className={classes.btn}
 											onClick={() => {
 												setIsSubmitting(true);
-												const submittedEntry = Object(entry);
+												const submittedvalues = Object(values);
 												setTimeout(() => {
 													// simiulated delay
 													alert(
 														`Form Submitted:\n${JSON.stringify(
-															submittedEntry,
+															submittedvalues,
 															"\t",
 															1
 														)}`
 													);
-													setEntry(DEFAULT_FORM_VALUE);
+													setValues(DEFAULT_FORM_VALUE);
 													setIsSubmitting(false);
 												}, 1500);
 											}}
@@ -238,7 +232,7 @@ const Form = () => {
 											color="secondary"
 											className={classes.btn}
 											onClick={() => {
-												setEntry(DEFAULT_FORM_VALUE);
+												setValues(DEFAULT_FORM_VALUE);
 											}}
 											disabled={isSubmitting}
 										>
@@ -250,7 +244,7 @@ const Form = () => {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<pre className={classes.codeblock}>
-								{JSON.stringify(entry, "\t", 1)}
+								{JSON.stringify(values, "\t", 1)}
 							</pre>
 						</Grid>
 					</Grid>

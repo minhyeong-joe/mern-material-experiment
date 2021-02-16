@@ -7,11 +7,19 @@ import {
 	RadioGroup,
 } from "@material-ui/core";
 
-const Radiobox = ({ label, options, onChange, labelPlacement, value, row }) => {
+const Radiobox = ({
+	label,
+	options,
+	onChange,
+	labelPlacement,
+	value,
+	row,
+	name,
+}) => {
 	return (
 		<FormControl>
 			<FormLabel>{label}</FormLabel>
-			<RadioGroup value={value} onChange={onChange} row={row}>
+			<RadioGroup value={value} onChange={onChange} row={row} name={name}>
 				{options.map((option) => (
 					<FormControlLabel
 						key={option.value}

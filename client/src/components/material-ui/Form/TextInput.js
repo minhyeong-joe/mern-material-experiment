@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const TextInput = ({ type, label, value, onChange, InputProps }) => {
+const TextInput = ({ type, label, value, onChange, InputProps, name }) => {
 	const styles = useStyles();
 	return (
 		<TextField
@@ -20,6 +20,7 @@ const TextInput = ({ type, label, value, onChange, InputProps }) => {
 			fullWidth
 			className={styles.input}
 			InputProps={InputProps}
+			name={name}
 		/>
 	);
 };

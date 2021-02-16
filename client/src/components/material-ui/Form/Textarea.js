@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Textarea = ({ label, value, onChange, rows }) => {
+const Textarea = ({ label, value, onChange, rows, name }) => {
 	const styles = useStyles();
 	return (
 		<TextField
@@ -20,6 +20,7 @@ const Textarea = ({ label, value, onChange, rows }) => {
 			variant="outlined"
 			fullWidth
 			className={styles.textarea}
+			name={name}
 		/>
 	);
 };
