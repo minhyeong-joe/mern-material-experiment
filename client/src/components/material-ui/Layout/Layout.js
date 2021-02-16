@@ -291,7 +291,7 @@ const Layout = () => {
 					marginBottom: "32px",
 				}}
 			>
-				<GridList cellHeight="128" cols={4} spacing={0}>
+				<GridList cellHeight={128} cols={4} spacing={0}>
 					<GridListTile cols={2} rows={2}>
 						<img
 							src="https://images.unsplash.com/photo-1612485222394-376d81a3e829?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
